@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>5970DF51-85A7-4A92-9582-83682F023866</string>
+	<key>IDESourceControlProjectName</key>
+	<string>ysDelay</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>82C88B6CB29BE8BB78AE625AD95EF25D7C5FFC5C</key>
+		<string>https://github.com/ryanfoo/tap-tempo-delay.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>ysDelay/Builds/MacOSX/ysDelay.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>82C88B6CB29BE8BB78AE625AD95EF25D7C5FFC5C</key>
+		<string>../../../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/ryanfoo/tap-tempo-delay.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>82C88B6CB29BE8BB78AE625AD95EF25D7C5FFC5C</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>82C88B6CB29BE8BB78AE625AD95EF25D7C5FFC5C</string>
+			<key>IDESourceControlWCCName</key>
+			<string>tap-tempo-delay</string>
+		</dict>
+	</array>
+</dict>
+</plist>
