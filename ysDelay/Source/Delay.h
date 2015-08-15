@@ -10,8 +10,13 @@
 #define __ysDelay__Delay__
 
 #include <stdio.h>
+// For jassert
+#include "../JuceLibraryCode/JuceHeader.h"
+// For memset/memory operations
+#include <string.h>
 
 #define INIT_SAMPLE_RATE        44100
+#define DELAY_MAX               (2*INIT_SAMPLE_RATE)
 
 class Delay {
     
