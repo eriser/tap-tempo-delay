@@ -42,23 +42,49 @@ void Delay::setSampleRate(const double sampleRate)
     currentSampleRate = sampleRate;
 }
 
+float Delay::interpolate(float x0, float x1, float y1, float y2, float fracDelay)
+{
+    // Calculate denom
+    float denom = x1-x0;
+    // if denom == 0, crossfade complete
+    if (denom == 0) return y1;
+    // calcluate slope
+    float dx = (fracDelay-x0)/denom;
+    // return weight sum through interpolation
+    return (dx*y2 + (1-dx)*y1);
+}
+
+
 // Mono channel processing
 void Delay::processMono(float* const samples, const int numSamples)
 {
     jassert (samples != nullptr);
     
+    float delay = parameters.delay*currentSampleRate;
+    int rInt = (int)delay;
+    float fracDelay = delay - rInt;
+    
     // Loop through all samples
     for (int i = 0; i < numSamples; i++)
     {
-        float y = samples[i];
-        // Write sample from input into delay buffer
-        delayL[writerL++] = y;
-        // Mix delay and dry signals
-        samples[i] = y * (1.0 - parameters.mix) + 0.7 * delayL[readerL++];
+        readerL = writerL - rInt;
+        if (readerL < 0) readerL += DELAY_MAX;
         
-        // Reset buffer counters when it reaches the DELAY_MAX paramter
-        readerL %= DELAY_MAX;
-        writerL %= DELAY_MAX;
+        float yn = samples[i];
+        if (writerL != readerL && parameters.delay >= 1.f) {
+            readerL = writerL - rInt;
+            if (readerL < 0) readerL += DELAY_MAX;
+            
+            int readerL_1 = readerL-1;
+            if (readerL_1 < 0) readerL_1 += DELAY_MAX;
+            yn = interpolate(0, 1, delayL[readerL], delayL[readerL_1], fracDelay);
+            if (++readerL >= DELAY_MAX) readerL = 0;
+            
+            delayL[writerL++] = samples[i] + parameters.fdbk;
+            if (writerL >= DELAY_MAX) writerL = 0;
+        }
+        
+        samples[i] = samples[i] * (1-parameters.mix) + yn * parameters.mix;
     }
 }
 

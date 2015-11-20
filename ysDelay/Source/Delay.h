@@ -55,6 +55,7 @@ public:
     // Clear buffers
     void prepareToPlay();
     
+    float interpolate(float x0, float x1, float y1, float y2, float fracDelay);
     // Audio Processing Methods
     void processMono(float* const samples, const int numSamples);
     void processStereo(float* const left, float* const right, const int numSamples);
